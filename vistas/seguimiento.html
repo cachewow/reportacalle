@@ -1,0 +1,43 @@
+<section class="intro">
+  <h1>Seguimiento</h1>
+  <p>Escribe el folio que te dimos al enviar el reporte, por ejemplo RC-0001.</p>
+</section>
+
+<form id="buscar" class="tarjeta buscar" action="/folio" method="get">
+  <label>
+    Folio
+    <input id="folio-buscar" name="folio" inputmode="text" autocapitalize="characters" placeholder="RC-0001" required>
+  </label>
+  <button class="boton" type="submit">Consultar</button>
+</form>
+
+<p id="error-folio" class="error" hidden role="alert"></p>
+
+<article id="ficha" class="tarjeta" hidden>
+  <p class="sobre" id="ficha-folio"></p>
+  <h2 id="ficha-tipo"></h2>
+  <p><span id="ficha-estado" class="estado"></span></p>
+  <ol id="linea" class="linea"></ol>
+  <p id="ficha-fecha" class="ayuda"></p>
+  <h3>Descripción</h3>
+  <p id="ficha-desc"></p>
+  <h3>Ubicación</h3>
+  <p><a id="ficha-mapa" href="" target="_blank" rel="noopener">Abrir en Google Maps</a></p>
+  <div id="mapa-folio" class="mapa mapa-ficha"></div>
+  <h3>Fotos del reporte</h3>
+  <div id="fotos-vecino" class="galeria"></div>
+  <section id="bloque-inspeccion" hidden>
+    <h3>Inspección</h3>
+    <dl class="medidas">
+      <div><dt>Largo</dt><dd id="m-largo">—</dd></div>
+      <div><dt>Ancho</dt><dd id="m-ancho">—</dd></div>
+      <div><dt>Profundidad</dt><dd id="m-prof">—</dd></div>
+      <div><dt>Área</dt><dd id="m-area">—</dd></div>
+    </dl>
+    <h3>Recomendación de reparación</h3>
+    <p id="ficha-recomendacion"></p>
+    <h3>Fotos de la inspección</h3>
+    <div id="fotos-inspeccion" class="galeria"></div>
+    <p id="ficha-envio" class="ayuda"></p>
+  </section>
+</article>

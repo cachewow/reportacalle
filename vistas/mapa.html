@@ -1,0 +1,19 @@
+<section class="intro">
+  <h1>Mapa de reportes</h1>
+  <p>Todos los reportes de la calle en San José Iturbide. El color indica el estatus. No se muestra el contacto de quien reportó.</p>
+</section>
+
+<div id="mapa" class="mapa mapa-publico" role="application" aria-label="Mapa de reportes ciudadanos"></div>
+<p id="error-mapa" class="error" hidden>No se pudo cargar el mapa. Revisa tu conexión o usa la lista de abajo.</p>
+
+<ul class="leyenda" aria-label="Significado de los colores">
+  <li><span class="punto" style="background:#d97706"></span> Recibido</li>
+  <li><span class="punto" style="background:#1d4ed8"></span> Inspeccionado</li>
+  <li><span class="punto" style="background:#7c3aed"></span> Enviado al municipio</li>
+  <li><span class="punto" style="background:#15803d"></span> Reparado</li>
+</ul>
+
+<section>
+  <h2>Lista</h2>
+  <div id="lista-reportes" class="lista"></div>
+</section>

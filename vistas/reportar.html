@@ -1,0 +1,90 @@
+<section class="intro">
+  <h1>Reporta un problema de la calle</h1>
+  <p>Baches, fugas, luminarias apagadas o coladeras abiertas. El reporte es gratuito y se comparte con el municipio de San José Iturbide.</p>
+</section>
+
+<form id="forma-reporte" class="tarjeta formulario" action="/api/reportes" method="post" enctype="multipart/form-data">
+  <label>
+    Tipo de problema
+    <select name="categoria" required>
+      <option value="">Elige una opción</option>
+      <option value="bache">Bache</option>
+      <option value="fuga">Fuga de agua</option>
+      <option value="alumbrado">Alumbrado</option>
+      <option value="coladera">Coladera</option>
+      <option value="otro">Otro</option>
+    </select>
+  </label>
+
+  <label>
+    Descripción
+    <textarea name="descripcion" required minlength="8" maxlength="4000" rows="4" placeholder="Qué pasa, desde cuándo y qué riesgo genera."></textarea>
+  </label>
+
+  <fieldset>
+    <legend>Fotos</legend>
+    <p class="ayuda">Puedes elegir varias. Evita fotografiar rostros y placas de autos. Se reducen en el teléfono antes de enviarlas.</p>
+    <label class="boton boton-secundario boton-archivo">
+      Elegir fotos
+      <input id="fotos" name="fotos" type="file" accept="image/*" multiple required>
+    </label>
+    <p id="resumen-fotos" class="ayuda">Ninguna foto elegida.</p>
+    <div id="previstas" class="galeria"></div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Ubicación</legend>
+    <p class="ayuda">El pin inicia en el centro de San José Iturbide. Arrástralo, toca el mapa o usa tu GPS.</p>
+    <div id="mapa-reporte" class="mapa mapa-formulario" role="application" aria-label="Mapa para colocar el pin del reporte"></div>
+    <button id="usar-gps" class="boton boton-secundario" type="button">Usar mi ubicación</button>
+    <p id="mensaje-gps" class="ayuda" role="status"></p>
+    <div class="rejilla">
+      <label>
+        Latitud
+        <input id="lat" name="lat" inputmode="decimal" required value="20.998600">
+      </label>
+      <label>
+        Longitud
+        <input id="lng" name="lng" inputmode="decimal" required value="-100.384300">
+      </label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Contacto (opcional)</legend>
+    <p class="ayuda">No se publica en el mapa ni en la página de seguimiento. Sirve solo si hace falta aclarar el reporte.</p>
+    <label class="casilla">
+      <input id="anonimo" name="anonimo" type="checkbox" value="1">
+      <span>Reportar de forma anónima</span>
+    </label>
+    <div id="campos-contacto">
+      <label>
+        Nombre
+        <input name="contacto_nombre" maxlength="120" autocomplete="name">
+      </label>
+      <label>
+        Teléfono o correo
+        <input name="contacto_dato" maxlength="160" autocomplete="email">
+      </label>
+    </div>
+  </fieldset>
+
+  <label class="casilla">
+    <input name="aviso" type="checkbox" required>
+    <span>Leí el <a href="/privacidad" target="_blank" rel="noopener">aviso de privacidad</a>.</span>
+  </label>
+
+  <p id="error-reporte" class="error" hidden role="alert"></p>
+  <button id="enviar" class="boton" type="submit">Enviar reporte</button>
+</form>
+
+<section id="resultado" class="tarjeta resultado" hidden role="status">
+  <p class="sobre">Tu folio</p>
+  <p id="folio" class="folio"></p>
+  <p>Guárdalo para consultar el avance. También puedes volver a esta página y entrar en «Mi folio».</p>
+  <div class="fila-botones">
+    <button id="copiar" class="boton boton-secundario" type="button">Copiar folio</button>
+    <a id="ir-seguimiento" class="boton" href="/folio">Ver seguimiento</a>
+  </div>
+  <p id="copiado" class="ayuda" hidden>Folio copiado.</p>
+</section>
