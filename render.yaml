@@ -1,0 +1,48 @@
+# Blueprint de Render para ReportaCalle.
+# La base de datos y las fotos viven en Supabase (no se crea Postgres de Render).
+# Los secretos con sync: false se capturan al crear el Blueprint y después
+# se cambian en el Dashboard del servicio (un sync posterior no los pisa).
+# Si aún no tienes un dato, escribe PENDIENTE: la app arranca y no envía correo
+# hasta que pongas el valor real en el Dashboard.
+
+services:
+  - type: web
+    name: reportacalle
+    runtime: node
+    plan: free
+    region: oregon
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /salud
+    autoDeployTrigger: commit
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_KEY
+        sync: false
+      - key: SUPABASE_BUCKET
+        sync: false
+      - key: PUBLIC_BASE_URL
+        sync: false
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_PORT
+        sync: false
+      - key: SMTP_SECURE
+        sync: false
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: MAIL_FROM
+        sync: false
+      - key: MAIL_TO
+        value: atencion.ciudadana@sji.gob.mx

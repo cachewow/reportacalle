@@ -1,0 +1,113 @@
+<section id="acceso" class="tarjeta">
+  <h1>Administración</h1>
+  <p>Entra con la contraseña del responsable del proyecto.</p>
+  <form id="forma-acceso">
+    <label>
+      Contraseña
+      <input name="password" type="password" required autocomplete="current-password">
+    </label>
+    <p id="error-acceso" class="error" hidden role="alert"></p>
+    <button class="boton" type="submit">Entrar</button>
+  </form>
+</section>
+
+<section id="panel" hidden>
+  <div class="barra">
+    <h1>Reportes</h1>
+    <button id="salir" class="boton boton-secundario boton-chico" type="button">Salir</button>
+  </div>
+
+  <p id="aviso-correo" class="aviso" hidden></p>
+
+  <div class="fila-botones">
+    <a class="boton boton-secundario" href="/api/admin/exportar.csv">Descargar CSV</a>
+    <a class="boton boton-secundario" href="/api/admin/exportar.xlsx">Descargar Excel</a>
+  </div>
+
+  <form id="filtros" class="filtros">
+    <label>
+      Estatus
+      <select name="estatus">
+        <option value="">Todos</option>
+        <option value="recibido">Recibido</option>
+        <option value="inspeccionado">Inspeccionado</option>
+        <option value="enviado">Enviado al municipio</option>
+        <option value="reparado">Reparado</option>
+      </select>
+    </label>
+    <label>
+      Categoría
+      <select name="categoria">
+        <option value="">Todas</option>
+        <option value="bache">Bache</option>
+        <option value="fuga">Fuga de agua</option>
+        <option value="alumbrado">Alumbrado</option>
+        <option value="coladera">Coladera</option>
+        <option value="otro">Otro</option>
+      </select>
+    </label>
+  </form>
+
+  <div id="lista" class="lista"></div>
+
+  <article id="detalle" class="tarjeta" hidden>
+    <button id="volver" class="boton boton-secundario boton-chico" type="button">Volver a la lista</button>
+    <p class="sobre" id="det-folio"></p>
+    <h2 id="det-tipo"></h2>
+    <p id="det-meta" class="ayuda"></p>
+    <p id="det-contacto"></p>
+    <p><a id="det-maps" href="" target="_blank" rel="noopener">Abrir en Google Maps</a>
+      · <a id="det-seguimiento" href="" target="_blank" rel="noopener">Página de seguimiento</a></p>
+    <h3>Descripción</h3>
+    <p id="det-desc"></p>
+    <h3>Fotos del vecino</h3>
+    <div id="det-fotos-vecino" class="galeria"></div>
+
+    <form id="forma-detalle" class="formulario">
+      <h3>Inspección</h3>
+      <p class="ayuda">Al guardar con el estatus «Inspeccionado» se intenta enviar el correo al municipio. Si el correo sale bien, el estatus pasa solo a «Enviado al municipio».</p>
+      <label>
+        Estatus
+        <select name="estatus" id="det-estatus">
+          <option value="recibido">Recibido</option>
+          <option value="inspeccionado">Inspeccionado</option>
+          <option value="enviado">Enviado al municipio</option>
+          <option value="reparado">Reparado</option>
+        </select>
+      </label>
+      <div class="rejilla">
+        <label>Largo (cm)
+          <input name="largo_cm" id="det-largo" inputmode="decimal" min="0" step="0.01">
+        </label>
+        <label>Ancho (cm)
+          <input name="ancho_cm" id="det-ancho" inputmode="decimal" min="0" step="0.01">
+        </label>
+        <label>Profundidad (cm)
+          <input name="profundidad_cm" id="det-prof" inputmode="decimal" min="0" step="0.01">
+        </label>
+      </div>
+      <p>Área (largo × ancho): <strong id="det-area">—</strong></p>
+      <label>
+        Recomendación de reparación
+        <textarea name="recomendacion" id="det-recomendacion" rows="4" maxlength="4000" placeholder="Qué conviene hacer para repararlo."></textarea>
+      </label>
+      <label class="boton boton-secundario boton-archivo">
+        Elegir fotos de la inspección
+        <input id="fotos-inspeccion" name="fotos" type="file" accept="image/*" multiple>
+      </label>
+      <p id="resumen-inspeccion" class="ayuda">Ninguna foto elegida.</p>
+      <p id="mensaje-guardar" class="ayuda" role="status"></p>
+      <p id="error-guardar" class="error" hidden role="alert"></p>
+      <button id="guardar" class="boton" type="submit">Guardar cambios</button>
+    </form>
+
+    <h3>Fotos de la inspección</h3>
+    <div id="det-fotos-inspeccion" class="galeria"></div>
+
+    <div class="fila-botones">
+      <button id="reenviar" class="boton boton-secundario" type="button">Reenviar al municipio</button>
+    </div>
+    <h3>Historial de envíos</h3>
+    <ul id="det-envios" class="envios"></ul>
+  </article>
+</section>

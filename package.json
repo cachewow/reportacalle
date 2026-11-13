@@ -1,0 +1,28 @@
+{
+  "name": "reportacalle",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Reportes ciudadanos de problemas de calle en San José Iturbide, Guanajuato.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "verificar": "node scripts/verificar.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.46.1",
+    "cookie-session": "^2.1.0",
+    "dotenv": "^16.4.7",
+    "exceljs": "^4.4.0",
+    "express": "^4.21.2",
+    "multer": "^2.5.0",
+    "nodemailer": "^10.5.0",
+    "pg": "^8.13.1"
+  },
+  "optionalDependencies": {
+    "better-sqlite3": "^11.6.0"
+  }
+}
